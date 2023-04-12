@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">№ п/п</th>
+      <th scope="col">ФИО</th>
+      <th scope="col">Гражданство</th>
+      <th scope="col">Год рождения</th>
+      <th scope="col">Место работы</th>
+      <th scope="col">Дата последнего обновления</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for client in clients %}
+    <tr>
+      <th>{{ client.id }}</th>
+      <th>{{ client.name }}</th>
+      <th>{{ client.birth_year }}</th>
+      <th>{{ client.work_place }}</th>
+      <th>{{ client.update_date }}</th>
+        <th><a href="{% url 'detail' client.id %}"> Подробнее </a></th>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}

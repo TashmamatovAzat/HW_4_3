@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">ID клиента</th>
+      <th scope="col">ФИО</th>
+      <th scope="col">Номер счета</th>
+      <th scope="col">Тип аккаунта</th>
+      <th scope="col">Сумма кредита</th>
+      <th scope="col">Дата получения кредита</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for account in client.account_set.all %}
+      {% for credit in account.credit_set.all %}
+    <tr>
+      <th>{{ client.id }}</th>
+      <th>{{ client.name }}</th>
+      <th>{{ account.number }}</th>
+      <th>{{ account.account_type }}</th>
+      <th>{{ credit.sum }}</th>
+      <th>{{ credit.date }}</th>
+    </tr>
+      {% endfor %}
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}
